@@ -1,0 +1,7 @@
+version: "2"
+services:
+  node:
+    image: nextjs-practice:1.0.0 
+    container_name: nextjs-practice-cont
+    ports:
+      - "3000:3000"
