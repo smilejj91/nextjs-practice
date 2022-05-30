@@ -3,11 +3,19 @@ FROM node:14.19.2-bullseye
 RUN mkdir -p /home/app
 WORKDIR /home/app
 
-RUN yarn add react react-dom next
+# install nextjs
+RUN npx create-next-app app-test
 
-COPY app/package.json /home/app/package.json
-COPY app/pages /home/app/pages
+# install tailwindcss
+RUN yarn add -D tailwindcss@latest postcss@latest autoprefixer@latest
+RUN npx tailwindcss init -p
+RUN yarn add @heroicons/react
+
+# install swr
+RUN yarn add swr
 
 EXPOSE 3000
+
+WORKDIR /home/app/app-test
 
 CMD [ "yarn", "dev" ]
